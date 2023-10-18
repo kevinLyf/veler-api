@@ -7,7 +7,11 @@ export class UserService {
     constructor(private prismaService: PrismaService) {}
 
     async getAllUser() : Promise<User[]> {
-        return this.prismaService.user.findMany();
+        return this.prismaService.user.findMany({
+            include: {
+                reservations: true
+            }
+        });
     }
 
     async getUserById(id: string): Promise<User | null> {

@@ -17,7 +17,6 @@ export class ReservationService {
     }
     
     async create(data: Reservation): Promise<Reservation> {
-        // Garanta que os campos de data são objetos Date
         data.check_in = new Date(data.check_in);
         data.check_out = new Date(data.check_out);
       

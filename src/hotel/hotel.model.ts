@@ -3,6 +3,7 @@ import { Prisma } from "@prisma/client";
 
 export class Hotel implements Prisma.HotelCreateInput {
     id?: string;
+    image?: string;
     name: string;
     address: string;
     description?: string;

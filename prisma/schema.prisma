@@ -16,7 +16,6 @@ model User {
   reservations Reservation[]
   created_at DateTime @default(now())
 }
-
 model Reservation {
   id String @id @unique @default(uuid())
   user_id String
@@ -30,6 +29,7 @@ model Reservation {
 
 model Hotel {
   id String @id @unique @default(uuid())
+  image String?
   name String
   description String?
   address String

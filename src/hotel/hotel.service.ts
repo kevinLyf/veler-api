@@ -7,7 +7,11 @@ export class HotelService {
     constructor(private prismaService: PrismaService) {}
 
     async getAllHotels(): Promise<Hotel[]> {
-        return this.prismaService.hotel.findMany();
+        return this.prismaService.hotel.findMany({
+          include: {
+            reservation: true
+          }
+        }) as unknown as Hotel[];
     }
 
     async getHotelById(id: string): Promise<Hotel | null> {
