@@ -7,15 +7,13 @@ export class UserService {
     constructor(private prismaService: PrismaService) {}
 
     async getAllUser() : Promise<User[]> {
-        return this.prismaService.user.findMany({
-            include: {
-                reservations: true
-            }
-        });
+        return this.prismaService.user.findMany();
     }
 
     async getUserById(id: string): Promise<User | null> {
-        return this.prismaService.user.findUnique({ where: { id} });
+        return this.prismaService.user.findUnique({ where: { id }, include: {
+            reservations: true
+        } });
     }
 
     async getUserByEmail(email: string): Promise<User | null> {
