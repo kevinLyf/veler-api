@@ -12,14 +12,10 @@ export class UserService {
 
     async getUserById(id: string): Promise<User | null> {
         return this.prismaService.user.findUnique({ where: { id }, include: {
-            reservations: true
+            reservations: true,
         } });
     }
-
-    async getUserByEmail(email: string): Promise<User | null> {
-        return this.prismaService.user.findUnique( { where: { email } });
-    }
-
+    
     // ERROR
     async deleteUserById(id: string): Promise<User | null> {
         return this.prismaService.user.delete({ where: { id } });

@@ -18,14 +18,6 @@ export class UserController {
         return result;
     }
 
-    @Get("/email/:email")
-    async getUserByEmail(@Param("email") email: string): Promise<User | null> {
-        const result = await this.userService.getUserById(email);
-        if(!result) throw new HttpException("User not found", HttpStatus.BAD_REQUEST);
-
-        return result;
-    }
-
     @Delete("/:id")
     async deleteUserById(@Param() id: string): Promise<User | null> {
         const result = await this.userService.deleteUserById(id);

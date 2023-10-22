@@ -15,7 +15,7 @@ export class HotelService {
     }
 
     async getHotelById(id: string): Promise<Hotel | null> {
-      return this.prismaService.hotel.findUnique({ where: { id } });
+      return this.prismaService.hotel.findUnique({ where: { id: id["id"] } });
     }
 
     async createHotel(data: Hotel): Promise<Hotel | null> {
