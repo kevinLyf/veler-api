@@ -17,14 +17,11 @@ export class ReservationService {
     }
     
     async create(data: Reservation): Promise<Reservation> {
-        data.check_in = new Date(data.check_in);
-        data.check_out = new Date(data.check_out);
-      
         const reservation = await this.prismaService.reservation.create({
           data: {
             ...data,
-            check_in: data.check_in.toISOString(),
-            check_out: data.check_out.toISOString(),
+            check_in: data.check_in,
+            check_out: data.check_out,
           },
         });
       

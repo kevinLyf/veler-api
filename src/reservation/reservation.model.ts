@@ -4,7 +4,7 @@ export class Reservation implements Prisma.ReservationCreateInput{
     id?: string;
     hotel: Prisma.HotelCreateNestedOneWithoutReservationInput;
     user: Prisma.UserCreateNestedOneWithoutReservationsInput;
-    check_in: string | Date;
-    check_out: string | Date;
+    check_in: string;
+    check_out: string;
     created_at?: string | Date;
 }

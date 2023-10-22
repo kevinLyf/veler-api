@@ -13,8 +13,8 @@ CREATE TABLE "Reservation" (
     "id" TEXT NOT NULL PRIMARY KEY,
     "user_id" TEXT NOT NULL,
     "hotel_id" TEXT NOT NULL,
-    "check_in" DATETIME NOT NULL,
-    "check_out" DATETIME NOT NULL,
+    "check_in" TEXT NOT NULL,
+    "check_out" TEXT NOT NULL,
     "created_at" DATETIME NOT NULL DEFAULT CURRENT_TIMESTAMP,
     CONSTRAINT "Reservation_user_id_fkey" FOREIGN KEY ("user_id") REFERENCES "User" ("id") ON DELETE RESTRICT ON UPDATE CASCADE,
     CONSTRAINT "Reservation_hotel_id_fkey" FOREIGN KEY ("hotel_id") REFERENCES "Hotel" ("id") ON DELETE RESTRICT ON UPDATE CASCADE

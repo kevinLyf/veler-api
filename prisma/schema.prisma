@@ -22,8 +22,8 @@ model Reservation {
   user User @relation(fields: [user_id], references: [id])
   hotel_id String
   hotel Hotel @relation(fields: [hotel_id], references: [id])
-  check_in DateTime
-  check_out DateTime
+  check_in String
+  check_out String
   created_at DateTime @default(now())
 }
 
