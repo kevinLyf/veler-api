@@ -16,8 +16,7 @@ export class UserService {
         } });
     }
     
-    // ERROR
     async deleteUserById(id: string): Promise<User | null> {
-        return this.prismaService.user.delete({ where: { id } });
+        return this.prismaService.user.delete({ where: { id: id["id"] } });
     }
 }

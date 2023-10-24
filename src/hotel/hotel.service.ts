@@ -1,4 +1,4 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { BadRequestException, Injectable, Param } from "@nestjs/common";
 import { PrismaService } from "src/prisma.service";
 import { Hotel } from "./hotel.model";
 
@@ -25,5 +25,9 @@ export class HotelService {
         } catch(err) {
            throw new BadRequestException("It was not possible to create a hotel", { description: "Fill in all fields" });
         }
+    }
+
+    async deleteHotel(id: string): Promise<Hotel | null>  {
+        return this.prismaService.hotel.delete({ where: { id: id["id"] } });
     }
 }

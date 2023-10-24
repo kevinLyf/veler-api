@@ -19,9 +19,9 @@ model User {
 model Reservation {
   id String @id @unique @default(uuid())
   user_id String
-  user User @relation(fields: [user_id], references: [id])
+  user User @relation(fields: [user_id], references: [id], onDelete: Cascade)
   hotel_id String
-  hotel Hotel @relation(fields: [hotel_id], references: [id])
+  hotel Hotel @relation(fields: [hotel_id], references: [id], onDelete: Cascade)
   check_in String
   check_out String
   created_at DateTime @default(now())

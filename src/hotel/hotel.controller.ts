@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Param, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { HotelService } from "./hotel.service";
 import { Hotel } from "./hotel.model";
 
@@ -25,6 +25,16 @@ export class HotelController {
         if(!result) throw new BadRequestException("Unable to create hotel");
 
         return result;
+    }
+
+    @Delete("/:id")
+    async deleteHotel(@Param() id: string): Promise<Hotel | null> {
+        try {
+            const result = await this.hotelService.deleteHotel(id);
+            return result;
+         } catch(err) {
+            throw new BadRequestException("This hotel does not exist");
+         }
     }
 
 }

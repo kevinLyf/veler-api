@@ -1,4 +1,4 @@
-import { Controller, Delete, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
+import { BadRequestException, Controller, Delete, Get, HttpException, HttpStatus, Param } from "@nestjs/common";
 import { User } from "./user.model";
 import { UserService } from "./user.service";
 
@@ -20,9 +20,11 @@ export class UserController {
 
     @Delete("/:id")
     async deleteUserById(@Param() id: string): Promise<User | null> {
-        const result = await this.userService.deleteUserById(id);
-        if(!result) throw new HttpException("User not found", HttpStatus.BAD_REQUEST);
-        
-        return result;
+        try {
+            const result = await this.userService.deleteUserById(id);
+            return result;
+        } catch(err) {
+            throw new BadRequestException("User not found");
+        }
     }
 }

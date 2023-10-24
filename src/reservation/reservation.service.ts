@@ -1,7 +1,6 @@
-import { BadRequestException, Injectable } from "@nestjs/common";
+import { Injectable } from "@nestjs/common";
 import { Reservation } from "@prisma/client";
 import { PrismaService } from "src/prisma.service";
-import { UserService } from "src/user/user.service";
 
 
 @Injectable()
