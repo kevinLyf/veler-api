@@ -30,4 +30,13 @@ export class HotelService {
     async deleteHotel(id: string): Promise<Hotel | null>  {
         return this.prismaService.hotel.delete({ where: { id: id["id"] } });
     }
+
+    async editHotel(id: string, hotel: Hotel): Promise<Hotel | null> {
+
+      const hotelExists = await this.prismaService.hotel.findUnique({ where: { id: id["id"] } });
+
+      if(!hotelExists) throw new BadRequestException("Hotel not found");
+
+      return this.prismaService.hotel.update({ where: { id: id["id"] }, data: hotel });
+    }
 }

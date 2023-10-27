@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post, Put } from "@nestjs/common";
 import { HotelService } from "./hotel.service";
 import { Hotel } from "./hotel.model";
 
@@ -35,6 +35,11 @@ export class HotelController {
          } catch(err) {
             throw new BadRequestException("This hotel does not exist");
          }
+    }
+
+    @Put("/:id")
+    async editHotel(@Param() id: string, @Body() hotel: Hotel): Promise<Hotel | null> {
+        return this.hotelService.editHotel(id, hotel);
     }
 
 }

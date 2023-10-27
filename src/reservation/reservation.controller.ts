@@ -1,4 +1,4 @@
-import { BadRequestException, Body, Controller, Get, Post } from "@nestjs/common";
+import { BadRequestException, Body, Controller, Delete, Get, Param, Post } from "@nestjs/common";
 import { Reservation } from "@prisma/client";
 import { ReservationService } from "./reservation.service";
 
@@ -11,9 +11,13 @@ export class ReservationController {
         return this.reservationService.getAll();
     }
 
-
     @Post()
     async create(@Body() data: Reservation): Promise<Reservation | null> {
         return this.reservationService.create(data);
+    }
+
+    @Delete("/:id")
+    async delete(@Param() id: string): Promise<Reservation | null> {
+        return this.reservationService.delete(id);
     }
 }

@@ -29,6 +29,10 @@ export class ReservationService {
           check_in: data.check_in,
           check_out: data.check_out,
         };
-      }
+    }
+
+  async delete(id : string): Promise<Reservation | null> {
+    return this.prismaService.reservation.delete({ where: { id: id["id"] } });
+  }
       
 }
